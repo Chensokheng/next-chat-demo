@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import ListMessages from "./ListMessages";
 import { supabaseServer } from "@/lib/supabase/server";
+import InitMessages from "@/lib/store/InitMessages";
 
 export default async function ChatMessages() {
 	const supabase = supabaseServer();
@@ -12,6 +13,7 @@ export default async function ChatMessages() {
 	return (
 		<Suspense fallback={"loading.."}>
 			<ListMessages />
+			<InitMessages messages={data || []} />
 		</Suspense>
 	);
 }
