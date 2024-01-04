@@ -13,8 +13,9 @@ export default function ChatInput() {
 	const supabase = supabaseBrowser();
 	const handleSendMessage = async (text: string) => {
 		if (text.trim()) {
+			const id = uuidv4();
 			const newMessage = {
-				id: uuidv4(),
+				id,
 				text,
 				send_by: user?.id,
 				is_edit: false,
@@ -28,7 +29,9 @@ export default function ChatInput() {
 			};
 			addMessage(newMessage as Imessage);
 
-			const { error } = await supabase.from("messages").insert({ text });
+			const { error } = await supabase
+				.from("messages")
+				.insert({ text, id });
 			if (error) {
 				toast.error(error.message);
 			}
