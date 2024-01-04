@@ -1,4 +1,4 @@
-import { Imessage } from "@/lib/store/messages";
+import { Imessage, useMessage } from "@/lib/store/messages";
 import React from "react";
 import Image from "next/image";
 
@@ -37,7 +37,9 @@ export default function Message({ message }: { message: Imessage }) {
 							{new Date(message.created_at).toDateString()}
 						</h1>
 					</div>
-					{message.users?.id === user?.id && <MessageMenu />}
+					{message.users?.id === user?.id && (
+						<MessageMenu message={message} />
+					)}
 				</div>
 				<p className="text-gray-300">{message.text}</p>
 			</div>
@@ -45,7 +47,9 @@ export default function Message({ message }: { message: Imessage }) {
 	);
 }
 
-const MessageMenu = () => {
+const MessageMenu = ({ message }: { message: Imessage }) => {
+	const setActionMessage = useMessage((state) => state.setActionMessage);
+
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger>
@@ -55,7 +59,14 @@ const MessageMenu = () => {
 				<DropdownMenuLabel>Action</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuItem>Edit</DropdownMenuItem>
-				<DropdownMenuItem>Delete</DropdownMenuItem>
+				<DropdownMenuItem
+					onClick={() => {
+						document.getElementById("trigger-delete")?.click();
+						setActionMessage(message);
+					}}
+				>
+					Delete
+				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);
