@@ -12,7 +12,6 @@ export default function ChatPresence() {
 		const channel = supabase.channel("room1");
 		channel
 			.on("presence", { event: "sync" }, () => {
-				console.log("Synced presence state: ", channel.presenceState());
 				const userIds = [];
 				for (const id in channel.presenceState()) {
 					// @ts-ignore
