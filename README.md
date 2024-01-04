@@ -36,3 +36,14 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 [ ] fallback loading
+[ ] Edit
+[ ] Delete Message
+[ ] Realtime listener
+[ ] Pagination
+
+
+
+curl 'https://exdezzoyljbzksrsnfqc.supabase.co/rest/v1/profile?select=*' \
+-H "apikey: SUPABASE_CLIENT_ANON_KEY" \
+-H "Authorization: Bearer SUPABASE_CLIENT_ANON_KEY"
+          
