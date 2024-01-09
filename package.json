@@ -18,6 +18,7 @@
     "@supabase/supabase-js": "^2.39.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "discord.js": "^14.14.1",
     "lucide-react": "^0.303.0",
     "next": "14.0.4",
     "next-themes": "^0.2.1",
@@ -27,6 +28,7 @@
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7",
     "uuid": "^9.0.1",
+    "zlib-sync": "^0.1.9",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
