@@ -1,4 +1,6 @@
 export async function POST(req: Request) {
+	console.log(req.body, "====");
+
 	await fetch(
 		"https://discord.com/api/webhooks/1194202014377320509/rL1B15fdeZgsaNXK_LIGfBqiB-N52rkIjjEFS4spUMJh8ra6-bpY-O24qPN14KgUZqbn",
 		{
