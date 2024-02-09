@@ -35,6 +35,8 @@
     "@types/react-dom": "^18",
     "@types/uuid": "^9.0.7",
     "autoprefixer": "^10.0.1",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "postcss": "^8",
