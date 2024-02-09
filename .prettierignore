@@ -1,0 +1,12 @@
+.next/
+.turbo/
+_next/
+__tmp__/
+dist/
+node_modules/
+target/
+compiled/
+
+lerna.json
+test-timings.json
+pnpm-lock.yaml
