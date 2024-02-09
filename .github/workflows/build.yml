@@ -1,0 +1,35 @@
+name: build
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    env:
+      node-version: 21.6.1
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.node-version }}
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Prettier check
+        run: pnpm run fmt.check
+      # - name: Lint check
+      #   run: pnpm run lint
+      # - name: Unit tests
+      #   run: pnpm run test.unit
+      - name: build check
+        run: pnpm run build

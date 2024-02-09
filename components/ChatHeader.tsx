@@ -7,37 +7,37 @@ import { useRouter } from "next/navigation";
 import ChatPresence from "./ChatPresence";
 
 export default function ChatHeader({ user }: { user: User | undefined }) {
-	const router = useRouter();
+  const router = useRouter();
 
-	const handleLoginWithGithub = () => {
-		const supabase = supabaseBrowser();
-		supabase.auth.signInWithOAuth({
-			provider: "github",
-			options: {
-				redirectTo: location.origin + "/auth/callback",
-			},
-		});
-	};
+  const handleLoginWithGithub = () => {
+    const supabase = supabaseBrowser();
+    supabase.auth.signInWithOAuth({
+      provider: "github",
+      options: {
+        redirectTo: location.origin + "/auth/callback",
+      },
+    });
+  };
 
-	const handleLogout = async () => {
-		const supabase = supabaseBrowser();
-		await supabase.auth.signOut();
-		router.refresh();
-	};
+  const handleLogout = async () => {
+    const supabase = supabaseBrowser();
+    await supabase.auth.signOut();
+    router.refresh();
+  };
 
-	return (
-		<div className="h-20">
-			<div className="p-5 border-b flex items-center justify-between h-full">
-				<div>
-					<h1 className="text-xl font-bold">Daily Chat</h1>
-					<ChatPresence />
-				</div>
-				{user ? (
-					<Button onClick={handleLogout}>Logout</Button>
-				) : (
-					<Button onClick={handleLoginWithGithub}>Login</Button>
-				)}
-			</div>
-		</div>
-	);
+  return (
+    <div className="h-20">
+      <div className="flex h-full items-center justify-between border-b p-5">
+        <div>
+          <h1 className="text-xl font-bold">Daily Chat</h1>
+          <ChatPresence />
+        </div>
+        {user ? (
+          <Button onClick={handleLogout}>Logout</Button>
+        ) : (
+          <Button onClick={handleLoginWithGithub}>Login</Button>
+        )}
+      </div>
+    </div>
+  );
 }

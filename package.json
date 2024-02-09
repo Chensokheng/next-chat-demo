@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "fmt": "prettier --write .",
+    "fmt.check": "prettier --check .",
     "lint": "next lint"
   },
   "dependencies": {
@@ -40,6 +42,9 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "postcss": "^8",
+    "prettier": "^3.2.5",
+    "prettier-plugin-css-order": "^2.0.1",
+    "prettier-plugin-tailwindcss": "^0.5.11",
     "supabase": "^1.127.4",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
