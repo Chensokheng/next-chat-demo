@@ -1,0 +1,26 @@
+pull_request_rules:
+  # approve
+  - name: automatic approval
+    conditions:
+      - author=dsm23
+      - check-success=build
+    actions:
+      review:
+        type: APPROVE
+        message: Automatically approving dsm23
+  - name: automatic approval for Dependabot pull requests
+    conditions:
+      - author=dependabot[bot]
+      - check-success=build
+    actions:
+      review:
+        type: APPROVE
+        message: Automatically approving dependabot
+  # merge
+  - name: Automatically merge when GitHub Actions jobs succeed
+    conditions:
+      - check-success=build
+      - "#approved-reviews-by>=1"
+    actions:
+      merge:
+        method: merge
