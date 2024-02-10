@@ -3,7 +3,6 @@ import React from "react";
 import { Input } from "./ui/input";
 import { supabaseBrowser } from "@/lib/supabase/browser";
 import { toast } from "sonner";
-import { v4 as uuidv4 } from "uuid";
 import { useUser } from "@/lib/store/user";
 import { Imessage, useMessage } from "@/lib/store/messages";
 
@@ -14,7 +13,7 @@ export default function ChatInput() {
   const supabase = supabaseBrowser();
   const handleSendMessage = async (text: string) => {
     if (text.trim()) {
-      const id = uuidv4();
+      const id = crypto.randomUUID();
       const newMessage = {
         id,
         text,
