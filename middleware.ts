@@ -54,9 +54,13 @@ export async function middleware(request: NextRequest) {
     },
   );
 
-  await supabase.auth.getSession();
+  const { data } = await supabase.auth.getSession();
 
-  return response;
+  if (data?.session) {
+    return response;
+  }
+
+  return NextResponse.redirect(new URL("/login", request.url));
 }
 
 export const config = {
@@ -66,8 +70,9 @@ export const config = {
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
+     * - login (auth)
      * Feel free to modify this pattern to include more paths.
      */
-    "/((?!_next/static|_next/image|favicon.ico).*)",
+    "/((?!_next/static|_next/image|favicon.ico|login).*)",
   ],
 };
